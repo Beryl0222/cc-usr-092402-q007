@@ -1,0 +1,8 @@
+[project]
+name = "clinical-supply-allocation"
+version = "0.1.0"
+description = "临床样品跨境配给领域资料"
+requires-python = ">=3.11"
+
+[tool.unittest]
+start-directory = "tests"
