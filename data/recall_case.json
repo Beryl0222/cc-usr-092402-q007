@@ -1,0 +1,578 @@
+[
+  {
+    "event_id": "reg-box-01",
+    "kind": "ENTITY_REGISTERED",
+    "occurred_at": "2026-09-10T08:30:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "entity_id": "c-box-01",
+      "entity_type": "box_segment",
+      "lot_id": "L-7721",
+      "quantity": 100,
+      "unit": "aliquot",
+      "custodian_site": "SH-CAMPUS"
+    }
+  },
+  {
+    "event_id": "reg-tube-a",
+    "kind": "ENTITY_REGISTERED",
+    "occurred_at": "2026-09-12T09:00:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "entity_id": "c-tube-A",
+      "entity_type": "container",
+      "lot_id": "L-7721",
+      "quantity": 60,
+      "unit": "aliquot",
+      "custodian_site": "SH-CAMPUS"
+    }
+  },
+  {
+    "event_id": "reg-tube-b",
+    "kind": "ENTITY_REGISTERED",
+    "occurred_at": "2026-09-12T09:05:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "entity_id": "c-tube-B",
+      "entity_type": "container",
+      "lot_id": "L-7721",
+      "quantity": 40,
+      "unit": "aliquot",
+      "custodian_site": "SH-CAMPUS"
+    }
+  },
+  {
+    "event_id": "split-box-01",
+    "kind": "ENTITY_SPLIT",
+    "occurred_at": "2026-09-12T09:10:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "parent_entity_id": "c-box-01",
+      "child_entity_ids": ["c-tube-A", "c-tube-B"],
+      "child_quantities": [60, 40]
+    }
+  },
+  {
+    "event_id": "ship-01",
+    "kind": "SHIPMENT_DISPATCHED",
+    "occurred_at": "2026-09-18T07:00:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "shipment_id": "SHIP-5520",
+      "entity_ids": ["c-tube-B"],
+      "from_site": "SH-CAMPUS",
+      "carrier": "COLD-CHAIN-9"
+    }
+  },
+  {
+    "event_id": "recall-001-v1",
+    "kind": "RECALL_NOTICE",
+    "occurred_at": "2026-09-20T09:00:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "recall_id": "R-2026-09-001",
+      "source_ref": "CMO-NOTICE-44",
+      "version": 1,
+      "scope_level": "container",
+      "scope_refs": ["c-box-01"],
+      "reason": "manufacturer_batch_contamination",
+      "requires_authorization": true
+    }
+  },
+  {
+    "event_id": "authz-001-v1",
+    "kind": "RECALL_AUTHORIZATION",
+    "occurred_at": "2026-09-20T10:00:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "recall_id": "R-2026-09-001",
+      "scope_version": 1,
+      "decision": "approved",
+      "reviewer_role": "central_quality_officer"
+    }
+  },
+  {
+    "event_id": "task-int-b",
+    "kind": "RECALL_TASK",
+    "occurred_at": "2026-09-20T10:20:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "task_id": "T-INT-B",
+      "recall_id": "R-2026-09-001",
+      "scope_version": 1,
+      "action": "intercept_in_transit",
+      "entity_ids": ["c-tube-B"],
+      "assigned_site": "DEPOT-WHZ",
+      "deadline_at": "2026-09-21T04:00:00+08:00"
+    }
+  },
+  {
+    "event_id": "task-qa-a",
+    "kind": "RECALL_TASK",
+    "occurred_at": "2026-09-20T10:25:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "task_id": "T-QA-A",
+      "recall_id": "R-2026-09-001",
+      "scope_version": 1,
+      "action": "quarantine_confirm",
+      "entity_ids": ["c-tube-A"],
+      "assigned_site": "SH-CAMPUS",
+      "deadline_at": "2026-09-21T18:00:00+08:00"
+    }
+  },
+  {
+    "event_id": "task-qa-b",
+    "kind": "RECALL_TASK",
+    "occurred_at": "2026-09-20T10:30:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "task_id": "T-QA-B",
+      "recall_id": "R-2026-09-001",
+      "scope_version": 1,
+      "action": "quarantine_confirm",
+      "entity_ids": ["c-tube-B"],
+      "assigned_site": "DEPOT-WHZ",
+      "deadline_at": "2026-09-22T12:00:00+08:00"
+    }
+  },
+  {
+    "event_id": "task-ret-b",
+    "kind": "RECALL_TASK",
+    "occurred_at": "2026-09-20T10:35:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "task_id": "T-RET-B",
+      "recall_id": "R-2026-09-001",
+      "scope_version": 1,
+      "action": "return_to_depot",
+      "entity_ids": ["c-tube-B"],
+      "assigned_site": "DEPOT-WHZ",
+      "deadline_at": "2026-09-23T18:00:00+08:00"
+    }
+  },
+  {
+    "event_id": "task-des-a",
+    "kind": "RECALL_TASK",
+    "occurred_at": "2026-09-20T10:40:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "task_id": "T-DES-A",
+      "recall_id": "R-2026-09-001",
+      "scope_version": 1,
+      "action": "destroy",
+      "entity_ids": ["c-tube-A"],
+      "assigned_site": "SH-CAMPUS",
+      "deadline_at": "2026-09-24T18:00:00+08:00"
+    }
+  },
+  {
+    "event_id": "task-rep-a",
+    "kind": "RECALL_TASK",
+    "occurred_at": "2026-09-20T10:45:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "task_id": "T-REP-A",
+      "recall_id": "R-2026-09-001",
+      "scope_version": 1,
+      "action": "allocate_replacement",
+      "entity_ids": ["c-tube-A"],
+      "assigned_site": "SH-CAMPUS",
+      "deadline_at": "2026-09-25T18:00:00+08:00"
+    }
+  },
+  {
+    "event_id": "task-res-001",
+    "kind": "RECALL_TASK",
+    "occurred_at": "2026-09-20T10:50:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "task_id": "T-RES-001",
+      "recall_id": "R-2026-09-001",
+      "scope_version": 1,
+      "action": "assess_result_impact",
+      "entity_ids": [],
+      "result_ids": ["res-9001"],
+      "assigned_site": "SH-CAMPUS",
+      "deadline_at": "2026-09-25T18:00:00+08:00"
+    }
+  },
+  {
+    "event_id": "intercept-b",
+    "kind": "IN_TRANSIT_INTERCEPT",
+    "occurred_at": "2026-09-20T22:10:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "shipment_id": "SHIP-5520",
+      "entity_id": "c-tube-B",
+      "status": "intercepted",
+      "holding_site": "DEPOT-WHZ"
+    }
+  },
+  {
+    "event_id": "ack-int-b-offline",
+    "kind": "RECALL_TASK_ACK",
+    "occurred_at": "2026-09-21T09:00:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "task_id": "T-INT-B",
+      "attempt": 1,
+      "status": "offline",
+      "reference_no": "INT-7721-0001",
+      "recorded_at_utc": "2026-09-20T14:12:00+00:00",
+      "note": "冷库 PDA 离线，回连后补传"
+    }
+  },
+  {
+    "event_id": "quarantine-a",
+    "kind": "QUARANTINE_CONFIRMATION",
+    "occurred_at": "2026-09-21T11:00:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "entity_id": "c-tube-A",
+      "status": "confirmed",
+      "reason": "recall",
+      "site": "SH-CAMPUS"
+    }
+  },
+  {
+    "event_id": "ack-qa-a",
+    "kind": "RECALL_TASK_ACK",
+    "occurred_at": "2026-09-21T11:05:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "task_id": "T-QA-A",
+      "attempt": 1,
+      "status": "success",
+      "reference_no": "QA-SH-0001"
+    }
+  },
+  {
+    "event_id": "quarantine-b",
+    "kind": "QUARANTINE_CONFIRMATION",
+    "occurred_at": "2026-09-21T15:30:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "entity_id": "c-tube-B",
+      "status": "confirmed",
+      "reason": "recall",
+      "site": "DEPOT-WHZ"
+    }
+  },
+  {
+    "event_id": "ack-qa-b",
+    "kind": "RECALL_TASK_ACK",
+    "occurred_at": "2026-09-21T15:35:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "task_id": "T-QA-B",
+      "attempt": 1,
+      "status": "success",
+      "reference_no": "QA-WH-0001"
+    }
+  },
+  {
+    "event_id": "return-b",
+    "kind": "RETURN_SHIPMENT",
+    "occurred_at": "2026-09-22T09:00:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "return_shipment_id": "RET-909",
+      "entity_ids": ["c-tube-B"],
+      "from_site": "DEPOT-WHZ",
+      "to_site": "CENTRAL-DEPOT"
+    }
+  },
+  {
+    "event_id": "ack-ret-b",
+    "kind": "RECALL_TASK_ACK",
+    "occurred_at": "2026-09-22T18:00:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "task_id": "T-RET-B",
+      "attempt": 1,
+      "status": "success",
+      "reference_no": "RET-909"
+    }
+  },
+  {
+    "event_id": "disposal-a",
+    "kind": "DISPOSAL_CERTIFICATE",
+    "occurred_at": "2026-09-23T10:00:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "certificate_id": "DES-3310",
+      "entity_ids": ["c-tube-A"],
+      "site": "SH-CAMPUS",
+      "method": "autoclave_incineration"
+    }
+  },
+  {
+    "event_id": "ack-des-a",
+    "kind": "RECALL_TASK_ACK",
+    "occurred_at": "2026-09-23T10:10:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "task_id": "T-DES-A",
+      "attempt": 1,
+      "status": "success",
+      "reference_no": "DES-3310"
+    }
+  },
+  {
+    "event_id": "replacement-a",
+    "kind": "REPLACEMENT_ALLOCATION",
+    "occurred_at": "2026-09-23T14:00:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "allocation_id": "RPL-77",
+      "for_entity_id": "c-tube-A",
+      "replacement_entity_id": "c-tube-A2",
+      "replacement_expires_at": "2027-03-01T00:00:00+08:00",
+      "site": "SH-CAMPUS"
+    }
+  },
+  {
+    "event_id": "ack-rep-a",
+    "kind": "RECALL_TASK_ACK",
+    "occurred_at": "2026-09-23T14:10:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "task_id": "T-REP-A",
+      "attempt": 1,
+      "status": "success",
+      "reference_no": "RPL-77"
+    }
+  },
+  {
+    "event_id": "assessment-res-001-v1",
+    "kind": "RESULT_IMPACT_ASSESSMENT",
+    "occurred_at": "2026-09-23T16:00:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "result_ids": ["res-9001"],
+      "verdict": "reinterpret",
+      "source_lot_id": "L-7721",
+      "scope_version": 1,
+      "custodian_site_at_test": "SH-CAMPUS",
+      "note": "衍生检测结果需结合污染重新解释，结论暂挂"
+    }
+  },
+  {
+    "event_id": "ack-res-001",
+    "kind": "RECALL_TASK_ACK",
+    "occurred_at": "2026-09-23T16:10:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "task_id": "T-RES-001",
+      "attempt": 1,
+      "status": "success",
+      "reference_no": "ASSESS-9001"
+    }
+  },
+  {
+    "event_id": "reg-tube-c",
+    "kind": "ENTITY_REGISTERED",
+    "occurred_at": "2026-09-15T11:00:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "entity_id": "c-tube-C",
+      "entity_type": "container",
+      "lot_id": "L-7721",
+      "quantity": 20,
+      "unit": "aliquot",
+      "custodian_site": "GZ-CAMPUS"
+    }
+  },
+  {
+    "event_id": "recall-001-v2",
+    "kind": "RECALL_SCOPE_REVISION",
+    "occurred_at": "2026-09-22T09:30:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "recall_id": "R-2026-09-001",
+      "source_ref": "CMO-NOTICE-44",
+      "version": 2,
+      "change_type": "expand",
+      "scope_level": "container",
+      "scope_refs": ["c-box-01", "c-tube-C"],
+      "requires_authorization": true
+    }
+  },
+  {
+    "event_id": "authz-001-v2",
+    "kind": "RECALL_AUTHORIZATION",
+    "occurred_at": "2026-09-22T10:30:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "recall_id": "R-2026-09-001",
+      "scope_version": 2,
+      "decision": "approved",
+      "reviewer_role": "central_quality_officer"
+    }
+  },
+  {
+    "event_id": "task-qa-c",
+    "kind": "RECALL_TASK",
+    "occurred_at": "2026-09-22T11:00:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "task_id": "T-QA-C",
+      "recall_id": "R-2026-09-001",
+      "scope_version": 2,
+      "action": "quarantine_confirm",
+      "entity_ids": ["c-tube-C"],
+      "assigned_site": "GZ-CAMPUS",
+      "deadline_at": "2026-09-23T12:00:00+09:00"
+    }
+  },
+  {
+    "event_id": "task-des-c",
+    "kind": "RECALL_TASK",
+    "occurred_at": "2026-09-22T11:05:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "task_id": "T-DES-C",
+      "recall_id": "R-2026-09-001",
+      "scope_version": 2,
+      "action": "destroy",
+      "entity_ids": ["c-tube-C"],
+      "assigned_site": "GZ-CAMPUS",
+      "deadline_at": "2026-09-24T12:00:00+09:00"
+    }
+  },
+  {
+    "event_id": "task-res-002",
+    "kind": "RECALL_TASK",
+    "occurred_at": "2026-09-22T11:10:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "task_id": "T-RES-002",
+      "recall_id": "R-2026-09-001",
+      "scope_version": 2,
+      "action": "assess_result_impact",
+      "entity_ids": [],
+      "result_ids": ["res-9005"],
+      "assigned_site": "GZ-CAMPUS",
+      "deadline_at": "2026-09-25T12:00:00+09:00"
+    }
+  },
+  {
+    "event_id": "quarantine-c",
+    "kind": "QUARANTINE_CONFIRMATION",
+    "occurred_at": "2026-09-22T16:00:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "entity_id": "c-tube-C",
+      "status": "confirmed",
+      "reason": "recall",
+      "site": "GZ-CAMPUS"
+    }
+  },
+  {
+    "event_id": "ack-qa-c",
+    "kind": "RECALL_TASK_ACK",
+    "occurred_at": "2026-09-22T16:05:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "task_id": "T-QA-C",
+      "attempt": 2,
+      "status": "success",
+      "reference_no": "QA-GZ-0007",
+      "note": "attempt 1 为线下签字失败件，已在 attempt 2 电子回执"
+    }
+  },
+  {
+    "event_id": "ack-qa-c-failed-1",
+    "kind": "RECALL_TASK_ACK",
+    "occurred_at": "2026-09-22T13:00:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "task_id": "T-QA-C",
+      "attempt": 1,
+      "status": "failed",
+      "retryable": true,
+      "reason": "纸质签批模糊，退回重签"
+    }
+  },
+  {
+    "event_id": "disposal-c",
+    "kind": "DISPOSAL_CERTIFICATE",
+    "occurred_at": "2026-09-23T11:00:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "certificate_id": "DES-3318",
+      "entity_ids": ["c-tube-C"],
+      "site": "GZ-CAMPUS",
+      "method": "autoclave_incineration"
+    }
+  },
+  {
+    "event_id": "ack-des-c",
+    "kind": "RECALL_TASK_ACK",
+    "occurred_at": "2026-09-23T11:10:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "task_id": "T-DES-C",
+      "attempt": 1,
+      "status": "success",
+      "reference_no": "DES-3318"
+    }
+  },
+  {
+    "event_id": "assessment-res-002",
+    "kind": "RESULT_IMPACT_ASSESSMENT",
+    "occurred_at": "2026-09-23T15:00:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "result_ids": ["res-9005"],
+      "verdict": "invalidate",
+      "source_lot_id": "L-7721",
+      "scope_version": 2,
+      "custodian_site_at_test": "GZ-CAMPUS"
+    }
+  },
+  {
+    "event_id": "ack-res-002",
+    "kind": "RECALL_TASK_ACK",
+    "occurred_at": "2026-09-23T15:10:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "task_id": "T-RES-002",
+      "attempt": 1,
+      "status": "success",
+      "reference_no": "ASSESS-9005"
+    }
+  },
+  {
+    "event_id": "assessment-res-001-v2",
+    "kind": "RESULT_IMPACT_ASSESSMENT",
+    "occurred_at": "2026-09-23T15:30:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "result_ids": ["res-9001"],
+      "verdict": "reinterpret",
+      "source_lot_id": "L-7721",
+      "scope_version": 2,
+      "supersedes": true,
+      "custodian_site_at_test": "SH-CAMPUS",
+      "note": "范围扩大到 v2 后复核，维持重新解释结论"
+    }
+  },
+  {
+    "event_id": "closure-001",
+    "kind": "RECALL_CLOSURE",
+    "occurred_at": "2026-09-23T18:00:00+08:00",
+    "subject_id": "demo-019",
+    "payload": {
+      "recall_id": "R-2026-09-001",
+      "scope_version": 2,
+      "original_lot_id": "L-7721",
+      "affected_qty": 120,
+      "destroyed_qty": 80,
+      "returned_qty": 40,
+      "quarantined_remaining_qty": 0,
+      "affected_result_ids": ["res-9001", "res-9005"]
+    }
+  }
+]
