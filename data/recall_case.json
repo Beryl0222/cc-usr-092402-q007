@@ -1,0 +1,308 @@
+[
+  {
+    "event_id": "rc-041-001",
+    "kind": "CONTAMINATION_NOTICE_RECEIVED",
+    "occurred_at": "2026-09-23T08:30:00+08:00",
+    "subject_id": "N-2026-041",
+    "payload": {
+      "notice_id": "N-2026-041",
+      "source": "CENTRAL-LAB",
+      "notice_revision": 1,
+      "content_digest": "dg-n041-v1"
+    }
+  },
+  {
+    "event_id": "rc-041-002",
+    "kind": "RECALL_ACTION_OPENED",
+    "occurred_at": "2026-09-23T09:05:00+08:00",
+    "subject_id": "R-041",
+    "payload": {
+      "recall_id": "R-041",
+      "notice_id": "N-2026-041",
+      "notice_revision": 1,
+      "content_digest": "dg-n041-v1",
+      "scope": {"kind": "LOT", "refs": ["L-778"]},
+      "disposition_policy": "DESTROY",
+      "objects": [
+        {"subject_ref": "C-1", "situation": "IN_STOCK", "custody_node_id": "SITE-NORTH", "quantity": 10, "due_at": "2026-09-25T18:00:00+08:00", "lot": "L-778"},
+        {"subject_ref": "C-2", "situation": "IN_TRANSIT", "custody_node_id": "SITE-EAST", "quantity": 12, "due_at": "2026-09-25T09:00:00-05:00", "disposition_policy": "RETURN", "lot": "L-778"},
+        {"subject_ref": "C-3", "situation": "IN_STOCK", "custody_node_id": "SITE-NORTH", "quantity": 4, "due_at": "2026-09-25T18:00:00+08:00", "lot": "L-778"},
+        {"subject_ref": "C-4", "situation": "SPLIT", "custody_node_id": "SITE-EAST", "quantity": 5, "parent_ref": "P-9", "parent_quantity": 10, "due_at": "2026-09-25T09:00:00-05:00", "lot": "L-778"},
+        {"subject_ref": "C-5", "situation": "SPLIT", "custody_node_id": "SITE-EAST", "quantity": 5, "parent_ref": "P-9", "parent_quantity": 10, "due_at": "2026-09-25T09:00:00-05:00", "lot": "L-778"},
+        {"subject_ref": "C-6", "situation": "ALLOCATED", "custody_node_id": "SITE-NORTH", "quantity": 6, "due_at": "2026-09-26T12:00:00+08:00", "lot": "L-778"},
+        {"subject_ref": "RES-9", "situation": "RESULT_ONLY", "custody_node_id": "SITE-EAST", "quantity": 1, "due_at": "2026-09-26T09:00:00-05:00", "lot": "L-778"}
+      ]
+    }
+  },
+  {
+    "event_id": "rc-041-003",
+    "kind": "CONTAMINATION_NOTICE_RECEIVED",
+    "occurred_at": "2026-09-23T09:06:00+08:00",
+    "subject_id": "N-2026-041",
+    "payload": {
+      "notice_id": "N-2026-041",
+      "source": "CENTRAL-LAB",
+      "notice_revision": 1,
+      "content_digest": "dg-n041-v1"
+    }
+  },
+  {
+    "event_id": "rc-041-004",
+    "kind": "MANUAL_HOLD_PLACED",
+    "occurred_at": "2026-09-23T10:20:00+08:00",
+    "subject_id": "H-041-1",
+    "payload": {
+      "hold_id": "H-041-1",
+      "subject_ref": "C-3",
+      "custody_node_id": "SITE-NORTH",
+      "actor_node_id": "SITE-NORTH",
+      "actor_role": "SITE_OPERATOR"
+    }
+  },
+  {
+    "event_id": "rc-041-005",
+    "kind": "CONTAMINATION_NOTICE_RECEIVED",
+    "occurred_at": "2026-09-23T11:00:00+08:00",
+    "subject_id": "N-2026-041",
+    "payload": {
+      "notice_id": "N-2026-041",
+      "source": "CENTRAL-LAB",
+      "notice_revision": 2,
+      "content_digest": "dg-n041-v2"
+    }
+  },
+  {
+    "event_id": "rc-041-006",
+    "kind": "DISPOSITION_TASK_ISSUED",
+    "occurred_at": "2026-09-23T11:05:00+08:00",
+    "subject_id": "N-2026-041:C-8:INTERCEPT_IN_TRANSIT",
+    "payload": {
+      "task": {
+        "task_kind": "INTERCEPT_IN_TRANSIT",
+        "subject_ref": "C-8",
+        "custody_node_id": "SITE-EAST",
+        "due_at": "2026-09-25T09:00:00-05:00",
+        "quantity": 3
+      },
+      "actor_node_id": "SITE-EAST",
+      "actor_role": "SITE_OPERATOR"
+    }
+  },
+  {
+    "event_id": "rc-041-007",
+    "kind": "RECALL_SCOPE_REVISED",
+    "occurred_at": "2026-09-23T14:00:00+08:00",
+    "subject_id": "R-041",
+    "payload": {
+      "recall_id": "R-041",
+      "scope_version": 2,
+      "added_objects": [
+        {"subject_ref": "C-7", "situation": "IN_STOCK", "custody_node_id": "SITE-EAST", "quantity": 7, "due_at": "2026-09-26T09:00:00-05:00", "lot": "L-778"}
+      ],
+      "removed_refs": ["C-3"],
+      "authorized_by": "CQ-LEAD-01"
+    }
+  },
+  {
+    "event_id": "rc-041-008",
+    "kind": "DISPOSITION_TASK_ACKED",
+    "occurred_at": "2026-09-23T15:30:00+08:00",
+    "subject_id": "N-2026-041:C-2:INTERCEPT_IN_TRANSIT",
+    "payload": {
+      "task_id": "N-2026-041:C-2:INTERCEPT_IN_TRANSIT",
+      "receipt_channel": "OFFLINE",
+      "offline_recorded_at": "2026-09-23T09:40:00-05:00",
+      "actor_node_id": "SITE-EAST",
+      "actor_role": "SITE_OPERATOR"
+    }
+  },
+  {
+    "event_id": "rc-041-009",
+    "kind": "DISPOSITION_TASK_COMPLETED",
+    "occurred_at": "2026-09-23T16:00:00+08:00",
+    "subject_id": "N-2026-041:C-2:INTERCEPT_IN_TRANSIT",
+    "payload": {
+      "task_id": "N-2026-041:C-2:INTERCEPT_IN_TRANSIT",
+      "quantity_handled": 12,
+      "actor_node_id": "SITE-EAST",
+      "actor_role": "SITE_OPERATOR"
+    }
+  },
+  {
+    "event_id": "rc-041-010",
+    "kind": "DISPOSITION_TASK_COMPLETED",
+    "occurred_at": "2026-09-23T16:10:00+08:00",
+    "subject_id": "N-2026-041:C-1:QUARANTINE_CONFIRM",
+    "payload": {
+      "task_id": "N-2026-041:C-1:QUARANTINE_CONFIRM",
+      "quantity_handled": 10,
+      "actor_node_id": "SITE-NORTH",
+      "actor_role": "SITE_OPERATOR"
+    }
+  },
+  {
+    "event_id": "rc-041-011",
+    "kind": "DISPOSITION_TASK_COMPLETED",
+    "occurred_at": "2026-09-23T16:40:00+08:00",
+    "subject_id": "N-2026-041:C-1:DESTRUCTION",
+    "payload": {
+      "task_id": "N-2026-041:C-1:DESTRUCTION",
+      "quantity_handled": 10,
+      "actor_node_id": "SITE-NORTH",
+      "actor_role": "SITE_OPERATOR"
+    }
+  },
+  {
+    "event_id": "rc-041-012",
+    "kind": "DISPOSITION_TASK_COMPLETED",
+    "occurred_at": "2026-09-23T17:05:00+08:00",
+    "subject_id": "N-2026-041:C-2:QUARANTINE_CONFIRM",
+    "payload": {
+      "task_id": "N-2026-041:C-2:QUARANTINE_CONFIRM",
+      "quantity_handled": 12,
+      "actor_node_id": "SITE-EAST",
+      "actor_role": "SITE_OPERATOR"
+    }
+  },
+  {
+    "event_id": "rc-041-013",
+    "kind": "DISPOSITION_TASK_FAILED",
+    "occurred_at": "2026-09-23T18:20:00+08:00",
+    "subject_id": "N-2026-041:C-2:RETURN_SHIPMENT",
+    "payload": {
+      "task_id": "N-2026-041:C-2:RETURN_SHIPMENT",
+      "retryable": true,
+      "quantity_handled": 8,
+      "actor_node_id": "SITE-EAST",
+      "actor_role": "SITE_OPERATOR"
+    }
+  },
+  {
+    "event_id": "rc-041-014",
+    "kind": "DISPOSITION_TASK_ISSUED",
+    "occurred_at": "2026-09-24T09:15:00+08:00",
+    "subject_id": "N-2026-041:C-2:RETURN_SHIPMENT",
+    "payload": {
+      "task": {
+        "task_kind": "RETURN_SHIPMENT",
+        "subject_ref": "C-2",
+        "custody_node_id": "SITE-EAST",
+        "due_at": "2026-09-25T09:00:00-05:00",
+        "quantity": 12,
+        "attempt": 2
+      },
+      "actor_node_id": "SITE-EAST",
+      "actor_role": "SITE_OPERATOR"
+    }
+  },
+  {
+    "event_id": "rc-041-015",
+    "kind": "DISPOSITION_TASK_COMPLETED",
+    "occurred_at": "2026-09-24T11:30:00+08:00",
+    "subject_id": "N-2026-041:C-2:RETURN_SHIPMENT",
+    "payload": {
+      "task_id": "N-2026-041:C-2:RETURN_SHIPMENT",
+      "quantity_handled": 12,
+      "actor_node_id": "SITE-EAST",
+      "actor_role": "SITE_OPERATOR"
+    }
+  },
+  {
+    "event_id": "rc-041-016",
+    "kind": "DISPOSITION_TASK_COMPLETED",
+    "occurred_at": "2026-09-24T13:00:00+08:00",
+    "subject_id": "N-2026-041:C-6:QUARANTINE_CONFIRM",
+    "payload": {
+      "task_id": "N-2026-041:C-6:QUARANTINE_CONFIRM",
+      "quantity_handled": 6,
+      "actor_node_id": "SITE-NORTH",
+      "actor_role": "SITE_OPERATOR"
+    }
+  },
+  {
+    "event_id": "rc-041-017",
+    "kind": "REPLACEMENT_ALLOCATED",
+    "occurred_at": "2026-09-24T14:00:00+08:00",
+    "subject_id": "N-2026-041:C-6:REPLACEMENT_ALLOCATION",
+    "payload": {
+      "task_id": "N-2026-041:C-6:REPLACEMENT_ALLOCATION",
+      "replacement_lot": "L-790",
+      "replacement_expiry": "2027-03-01T00:00:00+08:00",
+      "quantity": 6,
+      "actor_node_id": "SITE-NORTH",
+      "actor_role": "SITE_OPERATOR"
+    }
+  },
+  {
+    "event_id": "rc-041-018",
+    "kind": "RESULT_IMPACT_ASSESSED",
+    "occurred_at": "2026-09-24T14:30:00+08:00",
+    "subject_id": "RES-9",
+    "payload": {
+      "task_id": "N-2026-041:RES-9:RESULT_IMPACT_ASSESSMENT",
+      "affected_result_id": "RES-9",
+      "source_lot": "L-778",
+      "assessment": "REINTERPRET_REQUIRED",
+      "actor_node_id": "SITE-EAST",
+      "actor_role": "SITE_OPERATOR"
+    }
+  },
+  {
+    "event_id": "rc-041-019",
+    "kind": "DISPOSITION_TASK_COMPLETED",
+    "occurred_at": "2026-09-24T15:00:00+08:00",
+    "subject_id": "N-2026-041:C-4:QUARANTINE_CONFIRM",
+    "payload": {
+      "task_id": "N-2026-041:C-4:QUARANTINE_CONFIRM",
+      "quantity_handled": 5,
+      "actor_node_id": "SITE-EAST",
+      "actor_role": "SITE_OPERATOR"
+    }
+  },
+  {
+    "event_id": "rc-041-020",
+    "kind": "DISPOSITION_TASK_COMPLETED",
+    "occurred_at": "2026-09-24T15:20:00+08:00",
+    "subject_id": "N-2026-041:C-4:DESTRUCTION",
+    "payload": {
+      "task_id": "N-2026-041:C-4:DESTRUCTION",
+      "quantity_handled": 5,
+      "actor_node_id": "SITE-EAST",
+      "actor_role": "SITE_OPERATOR"
+    }
+  },
+  {
+    "event_id": "rc-041-021",
+    "kind": "DISPOSITION_TASK_COMPLETED",
+    "occurred_at": "2026-09-24T15:40:00+08:00",
+    "subject_id": "N-2026-041:C-5:QUARANTINE_CONFIRM",
+    "payload": {
+      "task_id": "N-2026-041:C-5:QUARANTINE_CONFIRM",
+      "quantity_handled": 5,
+      "actor_node_id": "SITE-EAST",
+      "actor_role": "SITE_OPERATOR"
+    }
+  },
+  {
+    "event_id": "rc-041-022",
+    "kind": "DISPOSITION_TASK_COMPLETED",
+    "occurred_at": "2026-09-24T16:05:00+08:00",
+    "subject_id": "N-2026-041:C-5:DESTRUCTION",
+    "payload": {
+      "task_id": "N-2026-041:C-5:DESTRUCTION",
+      "quantity_handled": 4,
+      "actor_node_id": "SITE-EAST",
+      "actor_role": "SITE_OPERATOR"
+    }
+  },
+  {
+    "event_id": "rc-041-023",
+    "kind": "RECALL_CLOSURE_REQUESTED",
+    "occurred_at": "2026-09-24T17:00:00+08:00",
+    "subject_id": "R-041",
+    "payload": {
+      "recall_id": "R-041",
+      "requested_by": "CQ-LEAD-01"
+    }
+  }
+]
